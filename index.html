@@ -45,16 +45,16 @@
           'publicKey': publicKey
         })
         .then((newCredentialInfo) => {
-          alert("yay")
-          alert('SUCCESS', newCredentialInfo)
-          alert('ClientDataJSON: ', bufferToString(newCredentialInfo.response.clientDataJSON))
+          alert('yay')
+          console.log('SUCCESS', newCredentialInfo)
+          console.log('ClientDataJSON: ', bufferToString(newCredentialInfo.response.clientDataJSON))
           let attestationObject = CBOR.decode(newCredentialInfo.response.attestationObject);
-          alert('AttestationObject: ', attestationObject)
+          console.log('AttestationObject: ', attestationObject)
           let authData = parseAuthData(attestationObject.authData);
-          alert('AuthData: ', authData);
-          alert('CredID: ', bufToHex(authData.credID));
-          alert('AAGUID: ', bufToHex(authData.aaguid));
-          alert('PublicKey', CBOR.decode(authData.COSEPublicKey.buffer));
+          console.log('AuthData: ', authData);
+          console.log('CredID: ', bufToHex(authData.credID));
+          console.log('AAGUID: ', bufToHex(authData.aaguid));
+          console.log('PublicKey', CBOR.decode(authData.COSEPublicKey.buffer));
         })
         .catch((error) => {
           alert('err')
